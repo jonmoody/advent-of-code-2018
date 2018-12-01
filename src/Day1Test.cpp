@@ -1,8 +1,13 @@
 #include <gtest/gtest.h>
+#include "Day1.h"
 
-TEST(Day1Test, APassingTest)
+TEST(Day1Test, WhenANegativeSignIsFoundInTheFrequencyThenItIsSubtracted)
 {
-    EXPECT_EQ(1, 1);
+    Day1 subject;
+
+    subject.addFrequency("-10");
+
+    EXPECT_EQ(-10, subject.getFrequency());
 }
 
 int main(int argc, char* argv[])
