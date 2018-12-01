@@ -5,6 +5,8 @@ using namespace std;
 void Day1::addFrequency(string input) {
     if (input.at(0) == '-') {
         frequency -= stoi(input.substr(1));
+    } else if (input.at(0) == '+') {
+        frequency += stoi(input.substr(1));
     }
 }
 
