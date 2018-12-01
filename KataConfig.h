@@ -1,0 +1,7 @@
+#ifndef KATA_CONFIG_H_
+#define KATA_CONFIG_H_
+
+#define KATA_VERSION_MAJOR 1
+#define KATA_VERSION_MINOR 0
+
+#endif //  KATA_CONFIG_H_
