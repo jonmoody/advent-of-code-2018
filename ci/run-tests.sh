@@ -1,3 +1,3 @@
 #!/bin/bash
 
-Kata/KataTest
+src/Day1Test

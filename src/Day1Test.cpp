@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-TEST(KataTest, APassingTest)
+TEST(Day1Test, APassingTest)
 {
     EXPECT_EQ(1, 1);
 }

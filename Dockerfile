@@ -11,7 +11,7 @@ RUN cd /usr/src/gtest && \
 # ------------------------------------
 
 RUN apt-get install -y vim
-ENV APP_HOME /kata
+ENV APP_HOME /src
 
 RUN mkdir $APP_HOME
 

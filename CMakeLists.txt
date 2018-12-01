@@ -1,25 +1,25 @@
 cmake_minimum_required (VERSION 2.6)
-project (KataMain)
+project (AdventOfCodeMain)
 
 ENABLE_TESTING()
 
 # The version number.
-set (KATA_VERSION_MAJOR 1)
-set (KATA_VERSION_MINOR 0)
+set (ADVENT_OF_CODE_VERSION_MAJOR 1)
+set (ADVENT_OF_CODE_VERSION_MINOR 0)
 
 # Greetings
 include_directories(
   "${PROJECT_BINARY_DIR}"
   "${PROJECT_BINARY_DIR}/ci"
-  "${PROJECT_BINARY_DIR}/Kata"
+  "${PROJECT_BINARY_DIR}/src"
 )
 add_subdirectory(ci)
-add_subdirectory(Kata)
+add_subdirectory(src)
 
 configure_file (
-  "${PROJECT_SOURCE_DIR}/KataConfig.h.in"
-  "${PROJECT_BINARY_DIR}/KataConfig.h"
+  "${PROJECT_SOURCE_DIR}/AdventOfCodeConfig.h.in"
+  "${PROJECT_BINARY_DIR}/AdventOfCodeConfig.h"
 )
 
-add_executable(KataMain Kata.cpp)
-target_link_libraries (KataMain Kata)
+add_executable(AdventOfCodeMain AdventOfCode.cpp)
+target_link_libraries (AdventOfCodeMain AdventOfCode)
