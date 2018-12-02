@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
 #include "Day2.h"
+#include <string>
+
+using namespace std;
 
 TEST(Day2Test, WhenAnIdDoesNotContainTheSameLetterTwiceThenItDoesNotHaveAnyDoubles) {
     Day2 subject;
@@ -75,4 +78,12 @@ TEST(Day2Test, TheChecksumWillBeTheMultiplicationOfTheDoubleAndTripleCount) {
     subject.scanId("bababc");
 
     EXPECT_EQ(4, subject.getChecksum());
+}
+
+TEST(Day2Test, WhenTwoIdsAreIdenticalThenTheBoxesAreNotCorrect) {
+    Day2 subject;
+
+    string matchingId = subject.getMatchingId("abcdef", "abcdef");
+
+    EXPECT_EQ("", matchingId);
 }

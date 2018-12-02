@@ -1,7 +1,4 @@
 #include "Day2.h"
-#include <map>
-#include <fstream>
-#include <iostream>
 
 using namespace std;
 
@@ -12,8 +9,11 @@ void Day2::solve() {
         string line;
         while (getline(file, line)) {
             scanId(line);
+            ids.push_back(line);
         }
     }
+
+
 
     cout << "Checksum: " << getChecksum() << endl;
 }
@@ -40,6 +40,10 @@ void Day2::scanId(string id) {
             tripleFound = true;
         }
     }
+}
+
+string Day2::getMatchingId(string firstId, string secondId) {
+    return "";
 }
 
 int Day2::getDoubleCount() {
