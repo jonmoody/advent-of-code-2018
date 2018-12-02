@@ -1,4 +1,4 @@
-add_library(AdventOfCode Day1.cpp)
-add_executable(Day1Test Day1Test.cpp)
-TARGET_LINK_LIBRARIES(Day1Test AdventOfCode gtest pthread)
-add_test(Day1Test Day1Test)
+add_library(AdventOfCode Day1.cpp Day2.cpp)
+add_executable(AdventOfCodeTest Day1Test.cpp Day2Test.cpp)
+TARGET_LINK_LIBRARIES(AdventOfCodeTest AdventOfCode gtest pthread)
+add_test(AdventOfCodeTest AdventOfCodeTest)
