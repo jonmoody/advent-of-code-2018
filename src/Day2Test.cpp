@@ -87,3 +87,11 @@ TEST(Day2Test, WhenTwoIdsAreIdenticalThenTheBoxesAreNotCorrect) {
 
     EXPECT_EQ("", matchingId);
 }
+
+TEST(Day2Test, WhenTwoIdsHaveMoreThanOneDifferentCharacterThenTheBoxesAreNotCorrect) {
+    Day2 subject;
+
+    string matchingId = subject.getMatchingId("abcdef", "ghijkl");
+
+    EXPECT_EQ("", matchingId);
+}
