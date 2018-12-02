@@ -14,13 +14,15 @@ void Day2::scanId(string id) {
     }
 
     bool doubleFound = false;
+    bool tripleFound = false;
     
     for (auto const& x : letterCount) {
         if (!doubleFound && x.second == 2) {
             doubles++;
             doubleFound = true;
-        } else if (x.second == 3) {
+        } else if (!tripleFound && x.second == 3) {
             triples++;
+            tripleFound = true;
         }
     }
 }

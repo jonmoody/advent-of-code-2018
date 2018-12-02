@@ -49,3 +49,11 @@ TEST(Day2Test, WhenAnIdContainsTwoDoublesThenItOnlyCountsOnce) {
 
     EXPECT_EQ(1, subject.getDoubleCount());
 }
+
+TEST(Day2Test, WhenAnIdContainsTwoTriplesThenItOnlyCountsOnce) {
+    Day2 subject;
+
+    subject.scanId("ababab");
+
+    EXPECT_EQ(1, subject.getTripleCount());
+}
