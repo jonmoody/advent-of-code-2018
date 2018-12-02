@@ -5,9 +5,12 @@
 
 class Day2 {
 public:
+    void solve();
+
     void scanId(std::string);
     int getDoubleCount();
     int getTripleCount();
+    int getChecksum();
 
 private:
     int doubles = 0;

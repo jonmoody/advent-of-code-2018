@@ -67,3 +67,12 @@ TEST(Day2Test, WhenMultipleIdsAreScannedThenTheCountsAreAccumulated) {
     EXPECT_EQ(2, subject.getDoubleCount());
     EXPECT_EQ(2, subject.getTripleCount());
 }
+
+TEST(Day2Test, TheChecksumWillBeTheMultiplicationOfTheDoubleAndTripleCount) {
+    Day2 subject;
+
+    subject.scanId("bababc");
+    subject.scanId("bababc");
+
+    EXPECT_EQ(4, subject.getChecksum());
+}

@@ -1,7 +1,22 @@
 #include "Day2.h"
 #include <map>
+#include <fstream>
+#include <iostream>
 
 using namespace std;
+
+void Day2::solve() {
+    ifstream file("src/input/day2.txt");
+
+    if (file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            scanId(line);
+        }
+    }
+
+    cout << "Checksum: " << getChecksum() << endl;
+}
 
 void Day2::scanId(string id) {
     map<char, int> letterCount;
@@ -33,4 +48,8 @@ int Day2::getDoubleCount() {
 
 int Day2::getTripleCount() {
     return triples;
+}
+
+int Day2::getChecksum() {
+    return getDoubleCount() * getTripleCount();
 }
