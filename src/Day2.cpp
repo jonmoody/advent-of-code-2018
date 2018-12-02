@@ -16,6 +16,8 @@ void Day2::scanId(string id) {
     for (auto const& x : letterCount) {
         if (x.second == 2) {
             doubles++;
+        } else if (x.second == 3) {
+            triples++;
         }
     }
 }
