@@ -13,9 +13,8 @@ void Day2::solve() {
         }
     }
 
-
-
     cout << "Checksum: " << getChecksum() << endl;
+    cout << "Matching Id: " << findMatch() << endl;
 }
 
 void Day2::scanId(string id) {
@@ -40,6 +39,21 @@ void Day2::scanId(string id) {
             tripleFound = true;
         }
     }
+}
+
+string Day2::findMatch() {
+    string commonId;
+
+    for (string id : ids) {
+        for (string secondId : ids) {
+            string checkMatch = getMatchingId(id, secondId);
+            if (checkMatch != "") {
+                return checkMatch;
+            }
+        }
+    }
+
+    return "";
 }
 
 string Day2::getMatchingId(string firstId, string secondId) {

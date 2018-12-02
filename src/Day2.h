@@ -12,6 +12,7 @@ public:
     void solve();
 
     void scanId(std::string);
+    std::string findMatch();
     std::string getMatchingId(std::string, std::string);
     int getDoubleCount();
     int getTripleCount();

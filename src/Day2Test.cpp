@@ -103,3 +103,16 @@ TEST(Day2Test, WhenOnlyOneCharacterIsDifferentBetweenIdsThenTheIdsAreCorrectAndT
 
     EXPECT_EQ("abcde", matchingId);
 }
+
+TEST(Day2Test, AllIdsInTheListWillLoopThroughToFindAMatchingId) {
+    Day2 subject;
+
+    subject.ids.push_back("abcdef");
+    subject.ids.push_back("ghijkl");
+    subject.ids.push_back("zzzzzz");
+    subject.ids.push_back("abcdeg");
+
+    string matchingId = subject.findMatch();
+
+    EXPECT_EQ("abcde", matchingId);
+}
