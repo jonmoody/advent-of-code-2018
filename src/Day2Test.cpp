@@ -32,3 +32,12 @@ TEST(Day2Test, WhenAnIdContainsALetterThreeTimesThenItIncreasesTheTripleCount) {
 
     EXPECT_EQ(1, subject.getTripleCount());
 }
+
+TEST(Day2Test, WhenAnIdContainsADoubleAndATripleThenItCountsForBoth) {
+    Day2 subject;
+
+    subject.scanId("bababc");
+
+    EXPECT_EQ(1, subject.getDoubleCount());
+    EXPECT_EQ(1, subject.getTripleCount());
+}
