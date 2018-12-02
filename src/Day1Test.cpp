@@ -1,30 +1,41 @@
 #include <gtest/gtest.h>
 #include "Day1.h"
 
-TEST(Day1Test, WhenANegativeSignIsFoundInTheFrequencyThenItIsSubtracted)
-{
+TEST(Day1Test, WhenANegativeSignIsFoundInTheFrequencyThenItIsSubtracted) {
     Day1 subject;
 
-    subject.addFrequency("-10");
-
-    EXPECT_EQ(-10, subject.getFrequency());
+    EXPECT_EQ(-10, subject.getSingleFrequency("-10"));
 }
 
 TEST(Day1Test, WhenAPositiveSignIsFoundInTheFrequencyThenItIsAdded) {
     Day1 subject;
 
-    subject.addFrequency("+50");
-
-    EXPECT_EQ(50, subject.getFrequency());
+    EXPECT_EQ(50, subject.getSingleFrequency("+50"));
 }
 
 TEST(Day1Test, WhenMultipleFrequenciesAreAddedThenItWillKeepARunningTotal) {
     Day1 subject;
 
-    subject.addFrequency("-10");
-    subject.addFrequency("+30");
+    subject.valuesFromFile.push_back(-1);
+    subject.valuesFromFile.push_back(1);
 
-    EXPECT_EQ(20, subject.getFrequency());
+    subject.findFrequencyMatch();
+
+    EXPECT_EQ(0, subject.getTotalFrequency());
+}
+
+TEST(Day1Test, WhenAFrequencyMatchIsNotFoundThenItWillLoopThroughTheListUntilItDoes) {
+    Day1 subject;
+
+    subject.valuesFromFile.push_back(3);
+    subject.valuesFromFile.push_back(3);
+    subject.valuesFromFile.push_back(4);
+    subject.valuesFromFile.push_back(-2);
+    subject.valuesFromFile.push_back(-4);
+
+    subject.findFrequencyMatch();
+
+    EXPECT_EQ(10, subject.getTotalFrequency());
 }
 
 int main(int argc, char* argv[])
