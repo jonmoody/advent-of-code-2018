@@ -12,10 +12,13 @@ void Day2::scanId(string id) {
             letterCount[letter] = 1;
         }
     }
+
+    bool doubleFound = false;
     
     for (auto const& x : letterCount) {
-        if (x.second == 2) {
+        if (!doubleFound && x.second == 2) {
             doubles++;
+            doubleFound = true;
         } else if (x.second == 3) {
             triples++;
         }
