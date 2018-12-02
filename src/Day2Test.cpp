@@ -95,3 +95,11 @@ TEST(Day2Test, WhenTwoIdsHaveMoreThanOneDifferentCharacterThenTheBoxesAreNotCorr
 
     EXPECT_EQ("", matchingId);
 }
+
+TEST(Day2Test, WhenOnlyOneCharacterIsDifferentBetweenIdsThenTheIdsAreCorrectAndTheCommonCharactersAreReturned) {
+    Day2 subject;
+
+    string matchingId = subject.getMatchingId("abcdef", "abcdeg");
+
+    EXPECT_EQ("abcde", matchingId);
+}

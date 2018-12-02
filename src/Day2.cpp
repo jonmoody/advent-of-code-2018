@@ -43,6 +43,26 @@ void Day2::scanId(string id) {
 }
 
 string Day2::getMatchingId(string firstId, string secondId) {
+    int differences = 0;
+    vector<int> differentPositions;
+
+    for (int x = 0; x < firstId.length(); x++) {
+        if (firstId.at(x) != secondId.at(x)) {
+            differences++;
+            differentPositions.push_back(x);
+        }
+    }
+
+    if (differences == 1) {
+        string commonId;
+        for (int x = 0; x < firstId.length(); x++) {
+            if (x != differentPositions[0]) {
+                commonId.push_back(firstId.at(x));
+            }
+        }
+        return commonId;
+    }
+
     return "";
 }
 
