@@ -7,6 +7,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include "FileReader.h"
 
 class Day1 {
 public:
@@ -19,8 +20,6 @@ public:
     std::vector<int> valuesFromFile;
 
 private:
-    void readFromFile();
-
     int frequency = 0;
     std::set<int> frequencyList;
     int numberOfPasses = 1;

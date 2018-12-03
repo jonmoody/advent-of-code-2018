@@ -3,7 +3,11 @@
 using namespace std;
 
 void Day1::solve() {
-    readFromFile();
+    vector<string> lines = FileReader::readLinesFromFile("src/input/day1.txt");
+    for (string line : lines) {
+        valuesFromFile.push_back(getSingleFrequency(line));
+    }
+    
     findFrequencyMatch();
 
     cout << "Number of passes: " << numberOfPasses << endl;
@@ -41,15 +45,4 @@ int Day1::getSingleFrequency(string input) {
 
 int Day1::getTotalFrequency() {
     return frequency;
-}
-
-void Day1::readFromFile() {
-    ifstream file("src/input/day1.txt");
-
-    if (file.is_open()) {
-        string line;
-        while (getline(file, line)) {
-            valuesFromFile.push_back(getSingleFrequency(line));
-        }
-    }
 }
