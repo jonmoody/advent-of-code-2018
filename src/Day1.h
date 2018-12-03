@@ -7,7 +7,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
-#include "FileReader.h"
+#include "utils/FileReader.h"
 
 class Day1 {
 public:
