@@ -27,6 +27,12 @@ Claim Day3::parseClaim(string claimInput) {
     point.x = claim.left;
     point.y = claim.top;
 
+    for (Point existingPoint : pointsTaken) {
+        if (point == existingPoint) {
+            pointsOverlapping.push_back(point);
+        }
+    }
+
     pointsTaken.push_back(point);
 
     return claim;

@@ -19,6 +19,10 @@ struct Claim {
 struct Point {
     int x = 0;
     int y = 0;
+
+    bool operator == (const Point &rhs) const {
+        return this->x == rhs.x && this->y == rhs.y;
+    }
 };
 
 class Day3 {
@@ -29,6 +33,8 @@ public:
 
     std::vector<Point> pointsTaken;
     std::vector<Point> pointsOverlapping;
+
+
 };
 
 #endif // DAY3_H
