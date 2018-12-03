@@ -1,21 +1,20 @@
 #include <gtest/gtest.h>
 #include "Day1.h"
 
-TEST(Day1Test, WhenANegativeSignIsFoundInTheFrequencyThenItIsSubtracted) {
+class Day1Test : public ::testing::Test {
+protected:
     Day1 subject;
+};
 
+TEST_F(Day1Test, WhenANegativeSignIsFoundInTheFrequencyThenItIsSubtracted) {
     EXPECT_EQ(-10, subject.getSingleFrequency("-10"));
 }
 
-TEST(Day1Test, WhenAPositiveSignIsFoundInTheFrequencyThenItIsAdded) {
-    Day1 subject;
-
+TEST_F(Day1Test, WhenAPositiveSignIsFoundInTheFrequencyThenItIsAdded) {
     EXPECT_EQ(50, subject.getSingleFrequency("+50"));
 }
 
-TEST(Day1Test, WhenMultipleFrequenciesAreAddedThenItWillKeepARunningTotal) {
-    Day1 subject;
-
+TEST_F(Day1Test, WhenMultipleFrequenciesAreAddedThenItWillKeepARunningTotal) {
     subject.valuesFromFile.push_back(-1);
     subject.valuesFromFile.push_back(1);
 
@@ -24,9 +23,7 @@ TEST(Day1Test, WhenMultipleFrequenciesAreAddedThenItWillKeepARunningTotal) {
     EXPECT_EQ(0, subject.getTotalFrequency());
 }
 
-TEST(Day1Test, WhenAFrequencyMatchIsNotFoundThenItWillLoopThroughTheListUntilItDoes) {
-    Day1 subject;
-
+TEST_F(Day1Test, WhenAFrequencyMatchIsNotFoundThenItWillLoopThroughTheListUntilItDoes) {
     subject.valuesFromFile.push_back(3);
     subject.valuesFromFile.push_back(3);
     subject.valuesFromFile.push_back(4);
