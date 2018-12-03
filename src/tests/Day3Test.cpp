@@ -50,3 +50,11 @@ TEST_F(Day3Test, WhenThereIsAPointThatOverlapsThenItIsRecorded) {
 
     EXPECT_EQ(1, subject.pointsOverlapping.size());
 }
+
+TEST_F(Day3Test, PointsThatOverlapAreNotDuplicated) {
+    subject.parseClaim("#1 @ 2,2: 1x1");
+    subject.parseClaim("#1 @ 2,2: 1x1");
+    subject.parseClaim("#1 @ 2,2: 1x1");
+
+    EXPECT_EQ(1, subject.pointsOverlapping.size());
+}
