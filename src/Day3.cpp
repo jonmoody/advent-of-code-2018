@@ -41,3 +41,7 @@ Claim Day3::parseClaim(string claimInput) {
 
     return claim;
 }
+
+int Day3::getNumberOfOverlappingSquares() {
+    return pointsOverlapping.size();
+}

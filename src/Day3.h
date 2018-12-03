@@ -30,11 +30,10 @@ public:
     void solve();
 
     Claim parseClaim(std::string);
+    int getNumberOfOverlappingSquares();
 
     std::vector<Point> pointsTaken;
     std::vector<Point> pointsOverlapping;
-
-
 };
 
 #endif // DAY3_H

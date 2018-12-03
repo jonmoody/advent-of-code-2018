@@ -58,3 +58,10 @@ TEST_F(Day3Test, PointsThatOverlapAreNotDuplicated) {
 
     EXPECT_EQ(1, subject.pointsOverlapping.size());
 }
+
+TEST_F(Day3Test, TheNumberOfOverlappingSquaresCanBeCalculated) {
+    subject.parseClaim("#1 @ 2,2: 2x2");
+    subject.parseClaim("#1 @ 3,2: 2x2");
+
+    EXPECT_EQ(2, subject.getNumberOfOverlappingSquares());
+}
