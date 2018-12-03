@@ -3,7 +3,15 @@
 using namespace std;
 
 void Day3::solve() {
+    vector<string> lines = FileReader::readLinesFromFile("src/input/day3.txt");
+    int x = 0;
+    for (string line : lines) {
+        cout << "Reading line: " << x << endl;
+        x++;
+        parseClaim(line);
+    }
 
+    cout << "Number of overlapping squares: " << getNumberOfOverlappingSquares() << endl;
 }
 
 Claim Day3::parseClaim(string claimInput) {
@@ -35,7 +43,9 @@ Claim Day3::parseClaim(string claimInput) {
                 }
             }
 
-            pointsTaken.push_back(newPoint);
+            if (find(pointsTaken.begin(), pointsTaken.end(), newPoint) == pointsTaken.end()) {
+                pointsTaken.push_back(newPoint);
+            }
         }
     }
 
