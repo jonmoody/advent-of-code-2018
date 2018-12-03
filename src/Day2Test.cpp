@@ -4,66 +4,55 @@
 
 using namespace std;
 
-TEST(Day2Test, WhenAnIdDoesNotContainTheSameLetterTwiceThenItDoesNotHaveAnyDoubles) {
+class Day2Test : public ::testing::Test {
+protected:
     Day2 subject;
+};
 
+TEST_F(Day2Test, WhenAnIdDoesNotContainTheSameLetterTwiceThenItDoesNotHaveAnyDoubles) {
     subject.scanId("abcdef");
 
     EXPECT_EQ(0, subject.getDoubleCount());
 }
 
-TEST(Day2Test, WhenAnIdDoesNotContainTheSameLetterThreeTimesThenItDoesNotHaveAnyTriples) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenAnIdDoesNotContainTheSameLetterThreeTimesThenItDoesNotHaveAnyTriples) {
     subject.scanId("abcdef");
 
     EXPECT_EQ(0, subject.getTripleCount());
 }
 
-TEST(Day2Test, WhenAnIdContainsALetterTwiceThenItIncreasesTheDoubleCount) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenAnIdContainsALetterTwiceThenItIncreasesTheDoubleCount) {
     subject.scanId("abcdee");
 
     EXPECT_EQ(1, subject.getDoubleCount());
 }
 
-TEST(Day2Test, WhenAnIdContainsALetterThreeTimesThenItIncreasesTheTripleCount) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenAnIdContainsALetterThreeTimesThenItIncreasesTheTripleCount) {
     subject.scanId("abcccd");
 
     EXPECT_EQ(1, subject.getTripleCount());
 }
 
-TEST(Day2Test, WhenAnIdContainsADoubleAndATripleThenItCountsForBoth) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenAnIdContainsADoubleAndATripleThenItCountsForBoth) {
     subject.scanId("bababc");
 
     EXPECT_EQ(1, subject.getDoubleCount());
     EXPECT_EQ(1, subject.getTripleCount());
 }
 
-TEST(Day2Test, WhenAnIdContainsTwoDoublesThenItOnlyCountsOnce) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenAnIdContainsTwoDoublesThenItOnlyCountsOnce) {
     subject.scanId("aabcdd");
 
     EXPECT_EQ(1, subject.getDoubleCount());
 }
 
-TEST(Day2Test, WhenAnIdContainsTwoTriplesThenItOnlyCountsOnce) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenAnIdContainsTwoTriplesThenItOnlyCountsOnce) {
     subject.scanId("ababab");
 
     EXPECT_EQ(1, subject.getTripleCount());
 }
 
-TEST(Day2Test, WhenMultipleIdsAreScannedThenTheCountsAreAccumulated) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenMultipleIdsAreScannedThenTheCountsAreAccumulated) {
     subject.scanId("bababc");
     subject.scanId("bababc");
 
@@ -71,42 +60,32 @@ TEST(Day2Test, WhenMultipleIdsAreScannedThenTheCountsAreAccumulated) {
     EXPECT_EQ(2, subject.getTripleCount());
 }
 
-TEST(Day2Test, TheChecksumWillBeTheMultiplicationOfTheDoubleAndTripleCount) {
-    Day2 subject;
-
+TEST_F(Day2Test, TheChecksumWillBeTheMultiplicationOfTheDoubleAndTripleCount) {
     subject.scanId("bababc");
     subject.scanId("bababc");
 
     EXPECT_EQ(4, subject.getChecksum());
 }
 
-TEST(Day2Test, WhenTwoIdsAreIdenticalThenTheBoxesAreNotCorrect) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenTwoIdsAreIdenticalThenTheBoxesAreNotCorrect) {
     string matchingId = subject.getMatchingId("abcdef", "abcdef");
 
     EXPECT_EQ("", matchingId);
 }
 
-TEST(Day2Test, WhenTwoIdsHaveMoreThanOneDifferentCharacterThenTheBoxesAreNotCorrect) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenTwoIdsHaveMoreThanOneDifferentCharacterThenTheBoxesAreNotCorrect) {
     string matchingId = subject.getMatchingId("abcdef", "ghijkl");
 
     EXPECT_EQ("", matchingId);
 }
 
-TEST(Day2Test, WhenOnlyOneCharacterIsDifferentBetweenIdsThenTheIdsAreCorrectAndTheCommonCharactersAreReturned) {
-    Day2 subject;
-
+TEST_F(Day2Test, WhenOnlyOneCharacterIsDifferentBetweenIdsThenTheIdsAreCorrectAndTheCommonCharactersAreReturned) {
     string matchingId = subject.getMatchingId("abcdef", "abcdeg");
 
     EXPECT_EQ("abcde", matchingId);
 }
 
-TEST(Day2Test, AllIdsInTheListWillLoopThroughToFindAMatchingId) {
-    Day2 subject;
-
+TEST_F(Day2Test, AllIdsInTheListWillLoopThroughToFindAMatchingId) {
     subject.ids.push_back("abcdef");
     subject.ids.push_back("ghijkl");
     subject.ids.push_back("zzzzzz");
