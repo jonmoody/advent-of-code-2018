@@ -23,21 +23,18 @@ Claim Day3::parseClaim(string claimInput) {
     claim.width = stoi(values.at(3));
     claim.height = stoi(values.at(4));
 
-    Point point;
-    point.x = claim.left;
-    point.y = claim.top;
-
-    for (Point existingPoint : pointsTaken) {
-        if (point == existingPoint) {
-            pointsOverlapping.push_back(point);
-        }
-    }
-
     for (int y = claim.top; y < claim.top + claim.height; y++) {
         for (int x = claim.left; x < claim.left + claim.width; x++) {
             Point newPoint;
             newPoint.x = x;
             newPoint.y = y;
+            
+            for (Point existingPoint : pointsTaken) {
+                if (newPoint == existingPoint) {
+                    pointsOverlapping.push_back(newPoint);
+                }
+            }
+
             pointsTaken.push_back(newPoint);
         }
     }
