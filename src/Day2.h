@@ -6,6 +6,7 @@
 #include <map>
 #include <fstream>
 #include <iostream>
+#include "FileReader.h"
 
 class Day2 {
 public:

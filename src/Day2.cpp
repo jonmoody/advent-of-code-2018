@@ -3,14 +3,10 @@
 using namespace std;
 
 void Day2::solve() {
-    ifstream file("src/input/day2.txt");
-
-    if (file.is_open()) {
-        string line;
-        while (getline(file, line)) {
-            scanId(line);
-            ids.push_back(line);
-        }
+    vector<string> lines = FileReader::readLinesFromFile("src/input/day2.txt");
+    for (string line : lines) {
+        scanId(line);
+        ids.push_back(line);
     }
 
     cout << "Checksum: " << getChecksum() << endl;
