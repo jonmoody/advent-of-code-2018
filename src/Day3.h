@@ -7,6 +7,7 @@
 #include <sstream>
 #include <vector>
 #include <iterator>
+#include <set>
 
 struct Claim {
     int id = 0;
@@ -16,15 +17,6 @@ struct Claim {
     int height = 0;
 };
 
-struct Point {
-    int x = 0;
-    int y = 0;
-
-    bool operator == (const Point &rhs) const {
-        return this->x == rhs.x && this->y == rhs.y;
-    }
-};
-
 class Day3 {
 public:
     void solve();
@@ -32,8 +24,8 @@ public:
     Claim parseClaim(std::string);
     int getNumberOfOverlappingSquares();
 
-    std::vector<Point> pointsTaken;
-    std::vector<Point> pointsOverlapping;
+    std::set<std::string> pointsTaken;
+    std::set<std::string> pointsOverlapping;
 };
 
 #endif // DAY3_H

@@ -4,10 +4,7 @@ using namespace std;
 
 void Day3::solve() {
     vector<string> lines = FileReader::readLinesFromFile("src/input/day3.txt");
-    int x = 0;
     for (string line : lines) {
-        cout << "Reading line: " << x << endl;
-        x++;
         parseClaim(line);
     }
 
@@ -33,18 +30,10 @@ Claim Day3::parseClaim(string claimInput) {
 
     for (int y = claim.top; y < claim.top + claim.height; y++) {
         for (int x = claim.left; x < claim.left + claim.width; x++) {
-            Point newPoint;
-            newPoint.x = x;
-            newPoint.y = y;
+            string newPoint = to_string(x) + "," + to_string(y);
 
-            for (Point existingPoint : pointsTaken) {
-                if (newPoint == existingPoint && find(pointsOverlapping.begin(), pointsOverlapping.end(), newPoint) == pointsOverlapping.end()) {
-                    pointsOverlapping.push_back(newPoint);
-                }
-            }
-
-            if (find(pointsTaken.begin(), pointsTaken.end(), newPoint) == pointsTaken.end()) {
-                pointsTaken.push_back(newPoint);
+            if (!pointsTaken.insert(newPoint).second) {
+                pointsOverlapping.insert(newPoint);
             }
         }
     }

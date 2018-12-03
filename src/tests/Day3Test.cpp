@@ -24,17 +24,10 @@ TEST_F(Day3Test, TheInputCanBeParsedCorrectly) {
 TEST_F(Day3Test, ThePointsTakenAreRecorded) {
     subject.parseClaim("#1 @ 2,2: 2x2");
 
-    EXPECT_EQ(2, subject.pointsTaken.at(0).x);
-    EXPECT_EQ(2, subject.pointsTaken.at(0).y);
-
-    EXPECT_EQ(3, subject.pointsTaken.at(1).x);
-    EXPECT_EQ(2, subject.pointsTaken.at(1).y);
-
-    EXPECT_EQ(2, subject.pointsTaken.at(2).x);
-    EXPECT_EQ(3, subject.pointsTaken.at(2).y);
-
-    EXPECT_EQ(3, subject.pointsTaken.at(3).x);
-    EXPECT_EQ(3, subject.pointsTaken.at(3).y);
+    EXPECT_TRUE(subject.pointsTaken.find("2,2") != subject.pointsTaken.end());
+    EXPECT_TRUE(subject.pointsTaken.find("2,3") != subject.pointsTaken.end());
+    EXPECT_TRUE(subject.pointsTaken.find("3,2") != subject.pointsTaken.end());
+    EXPECT_TRUE(subject.pointsTaken.find("3,3") != subject.pointsTaken.end());
 }
 
 TEST_F(Day3Test, WhenThereAreNoPointsThatOverlapThenThereAreNoPointsRecorded) {
