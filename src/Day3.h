@@ -28,6 +28,7 @@ public:
     Claim parseClaim(std::string);
 
     std::vector<Point> pointsTaken;
+    std::vector<Point> pointsOverlapping;
 };
 
 #endif // DAY3_H

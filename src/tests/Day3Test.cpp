@@ -29,3 +29,10 @@ TEST_F(Day3Test, ThePointsTakenAreRecorded) {
     EXPECT_EQ(2, point.x);
     EXPECT_EQ(2, point.y);
 }
+
+TEST_F(Day3Test, WhenThereAreNoPointsThatOverlapThenThereAreNoPointsRecorded) {
+    subject.parseClaim("#1 @ 2,2: 1x1");
+    subject.parseClaim("#1 @ 3,3: 1x1");
+
+    EXPECT_EQ(0, subject.pointsOverlapping.size());
+}
