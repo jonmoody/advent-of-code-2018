@@ -33,7 +33,14 @@ Claim Day3::parseClaim(string claimInput) {
         }
     }
 
-    pointsTaken.push_back(point);
+    for (int y = claim.top; y < claim.top + claim.height; y++) {
+        for (int x = claim.left; x < claim.left + claim.width; x++) {
+            Point newPoint;
+            newPoint.x = x;
+            newPoint.y = y;
+            pointsTaken.push_back(newPoint);
+        }
+    }
 
     return claim;
 }
