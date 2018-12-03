@@ -20,3 +20,12 @@ TEST_F(Day3Test, TheInputCanBeParsedCorrectly) {
     EXPECT_EQ(5, claim.width);
     EXPECT_EQ(6, claim.height);
 }
+
+TEST_F(Day3Test, ThePointsTakenAreRecorded) {
+    subject.parseClaim("#1 @ 2,2: 1x1");
+
+    Point point = subject.pointsTaken.at(0);
+
+    EXPECT_EQ(2, point.x);
+    EXPECT_EQ(2, point.y);
+}

@@ -1,9 +1,4 @@
 #include "Day3.h"
-#include <iostream>
-#include <algorithm>
-#include <sstream>
-#include <vector>
-#include <iterator>
 
 using namespace std;
 
@@ -27,6 +22,12 @@ Claim Day3::parseClaim(string claimInput) {
     claim.top = stoi(values.at(2));
     claim.width = stoi(values.at(3));
     claim.height = stoi(values.at(4));
+
+    Point point;
+    point.x = claim.left;
+    point.y = claim.top;
+
+    pointsTaken.push_back(point);
 
     return claim;
 }
