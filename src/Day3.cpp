@@ -13,21 +13,17 @@ void Day3::solve() {
 }
 
 Claim Day3::parseClaim(string claimInput) {
-    replace(claimInput.begin(), claimInput.end(), ',', ' ');
-    replace(claimInput.begin(), claimInput.end(), ':', ' ');
-    replace(claimInput.begin(), claimInput.end(), 'x', ' ');
-    replace(claimInput.begin(), claimInput.end(), '#', ' ');
-    replace(claimInput.begin(), claimInput.end(), '@', ' ');
+    string removeChars = ",:x#@";
+    for (string::iterator it = claimInput.begin(); it < claimInput.end(); ++it) {
+        if (removeChars.find(*it) != string::npos) {
+            *it = ' ';
+        }
+    }
 
     istringstream iss(claimInput);
     vector<string> values { istream_iterator<string>{iss}, istream_iterator<string>{}};
 
-    Claim claim;
-    claim.id = stoi(values.at(0));
-    claim.left = stoi(values.at(1));
-    claim.top = stoi(values.at(2));
-    claim.width = stoi(values.at(3));
-    claim.height = stoi(values.at(4));
+    Claim claim = { stoi(values.at(0)), stoi(values.at(1)), stoi(values.at(2)), stoi(values.at(3)), stoi(values.at(4)) };
 
     bool claimRemoved = false;
     possibleUntouchedClaims.push_back(claim);
@@ -57,7 +53,7 @@ int Day3::getNumberOfOverlappingSquares() {
 int Day3::getUntouchedClaimId() {
     for (Claim claim : possibleUntouchedClaims) {
         bool correctId = true;
-        
+
         for (int y = claim.top; y < claim.top + claim.height; y++) {
             for (int x = claim.left; x < claim.left + claim.width; x++) {
                 string point = to_string(x) + "," + to_string(y);
