@@ -23,9 +23,14 @@ public:
 
     Claim parseClaim(std::string);
     int getNumberOfOverlappingSquares();
+    int getUntouchedClaimId();
 
     std::set<std::string> pointsTaken;
     std::set<std::string> pointsOverlapping;
+
+private:
+    int untouchedClaimId = 0;
+    std::vector<Claim> possibleUntouchedClaims;
 };
 
 #endif // DAY3_H

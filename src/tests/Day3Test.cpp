@@ -58,3 +58,13 @@ TEST_F(Day3Test, TheNumberOfOverlappingSquaresCanBeCalculated) {
 
     EXPECT_EQ(2, subject.getNumberOfOverlappingSquares());
 }
+
+TEST_F(Day3Test, TheIdOfTheUntouchedClaimIsKept) {
+    subject.parseClaim("#1 @ 2,2: 2x2");
+    subject.parseClaim("#2 @ 3,2: 2x2");
+    subject.parseClaim("#3 @ 10,10: 2x2");
+    subject.parseClaim("#4 @ 3,2: 2x2");
+    subject.parseClaim("#5 @ 3,2: 2x2");
+
+    EXPECT_EQ(3, subject.getUntouchedClaimId());
+}

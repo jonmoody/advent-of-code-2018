@@ -9,6 +9,7 @@ void Day3::solve() {
     }
 
     cout << "Number of overlapping squares: " << getNumberOfOverlappingSquares() << endl;
+    cout << "Untouched claim id: " << getUntouchedClaimId() << endl;
 }
 
 Claim Day3::parseClaim(string claimInput) {
@@ -28,13 +29,21 @@ Claim Day3::parseClaim(string claimInput) {
     claim.width = stoi(values.at(3));
     claim.height = stoi(values.at(4));
 
+    bool claimRemoved = false;
+    possibleUntouchedClaims.push_back(claim);
+
     for (int y = claim.top; y < claim.top + claim.height; y++) {
         for (int x = claim.left; x < claim.left + claim.width; x++) {
             string newPoint = to_string(x) + "," + to_string(y);
 
             if (!pointsTaken.insert(newPoint).second) {
                 pointsOverlapping.insert(newPoint);
-            }
+
+                if (!claimRemoved) {
+                    possibleUntouchedClaims.pop_back();
+                    claimRemoved = true;
+                }
+            } 
         }
     }
 
@@ -43,4 +52,25 @@ Claim Day3::parseClaim(string claimInput) {
 
 int Day3::getNumberOfOverlappingSquares() {
     return pointsOverlapping.size();
+}
+
+int Day3::getUntouchedClaimId() {
+    for (Claim claim : possibleUntouchedClaims) {
+        bool correctId = true;
+        
+        for (int y = claim.top; y < claim.top + claim.height; y++) {
+            for (int x = claim.left; x < claim.left + claim.width; x++) {
+                string point = to_string(x) + "," + to_string(y);
+
+                if (pointsOverlapping.find(point) != pointsOverlapping.end()) {
+                    correctId = false;
+                }
+            }
+        }
+
+        if (correctId) {
+            return claim.id;
+        }
+    }
+    return 0;
 }
