@@ -2,6 +2,7 @@
 #include "src/Day1.h"
 #include "src/Day2.h"
 #include "src/Day3.h"
+#include "src/Day4.h"
 
 using namespace std;
 
@@ -22,6 +23,11 @@ int main(int argc, char** argv)
     cout << "Day 3" << endl;
     Day3 day3;
     day3.solve();
+
+    cout << "===================" << endl;
+    cout << "Day 4" << endl;
+    Day4 day4;
+    day4.solve();
 
     return 0;
 }
