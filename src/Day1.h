@@ -22,7 +22,6 @@ public:
 private:
     int frequency = 0;
     std::set<int> frequencyList;
-    int numberOfPasses = 1;
 };
 
 #endif // DAY1_H

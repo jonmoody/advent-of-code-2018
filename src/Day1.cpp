@@ -7,15 +7,16 @@ void Day1::solve() {
     for (string line : lines) {
         valuesFromFile.push_back(getSingleFrequency(line));
     }
-    
+
     findFrequencyMatch();
 
-    cout << "Number of passes: " << numberOfPasses << endl;
     cout << "Matched frequency: " << frequency << endl;
 }
 
 void Day1::findFrequencyMatch() {
     auto currentFrequencyChange(valuesFromFile.begin());
+
+    bool firstFrequencyFound = false;
 
     while (frequencyList.find(frequency) == frequencyList.end()) {
         frequencyList.insert(frequency);
@@ -25,10 +26,10 @@ void Day1::findFrequencyMatch() {
         if (currentFrequencyChange == valuesFromFile.end()) {
             currentFrequencyChange = valuesFromFile.begin();
 
-            if (numberOfPasses == 1) {
+            if (!firstFrequencyFound) {
                 cout << "First pass frequency: " << frequency << endl;
+                firstFrequencyFound = true;
             }
-            numberOfPasses++;
         }
     }
 }
