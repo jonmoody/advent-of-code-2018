@@ -11,10 +11,11 @@ void Day4::solve() {
     accumulateGuardSleepTimes();
 
     string sleepiestGuardId = getSleepiestGuard();
+    string sleepiestMinute = getSleepiestMinute(sleepiestGuardId);
 
     cout << "Sleepiest guard: " << sleepiestGuardId << endl;
-    cout << "Minutes slept: " << guardSleepTimes[sleepiestGuardId] << endl;
-    cout << sleepiestGuardId << " * " << guardSleepTimes[sleepiestGuardId] << " = " << stoi(sleepiestGuardId) * guardSleepTimes[sleepiestGuardId] << endl;
+    cout << "Most common minute slept: " << sleepiestMinute << endl;
+    cout << sleepiestGuardId << " * " << sleepiestMinute << " = " << stoi(sleepiestGuardId) * stoi(sleepiestMinute) << endl;
 }
 
 void Day4::parseItem(string item) {
@@ -26,7 +27,6 @@ void Day4::sortItems() {
 }
 
 void Day4::accumulateGuardSleepTimes() {
-
     string minuteDelim = ":";
     string guardDelim = "#";
     string guard = "";
@@ -71,6 +71,10 @@ void Day4::accumulateGuardSleepTimes() {
                     ++it;
                     minuteAwake.push_back(*it);
 
+                    for (int x = stoi(minuteAsleep); x < stoi(minuteAwake); x++) {
+                        sleepyMinutes[guard][to_string(x)] = sleepyMinutes[guard][to_string(x)] + 1;
+                    }
+
                     guardSleepTimes[guard] += stoi(minuteAwake) - stoi(minuteAsleep);
                 }
             }
@@ -90,4 +94,18 @@ string Day4::getSleepiestGuard() {
     }
 
     return guardId;
+}
+
+string Day4::getSleepiestMinute(string guard) {
+    string sleepiestMinute = "";
+    int mostCommonMinute = 0;
+
+    for (auto const& minute : sleepyMinutes[guard]) {
+        if (minute.second > mostCommonMinute) {
+            sleepiestMinute = minute.first;
+            mostCommonMinute = minute.second;
+        }
+    }
+
+    return sleepiestMinute;
 }

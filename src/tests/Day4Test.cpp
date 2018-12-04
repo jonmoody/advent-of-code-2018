@@ -46,3 +46,16 @@ TEST_F(Day4Test, TheGuardWithTheLongestSleepTimeWillBeFound) {
 
     EXPECT_EQ("1093", subject.getSleepiestGuard());
 }
+
+TEST_F(Day4Test, TheMinuteSpentMostAsleepCanBeFound) {
+    subject.parseItem("[1518-11-01 00:00] Guard #43 begins shift");
+    subject.parseItem("[1518-11-01 00:05] falls asleep");
+    subject.parseItem("[1518-11-01 00:25] wakes up");
+    subject.parseItem("[1518-11-02 00:00] Guard #43 begins shift");
+    subject.parseItem("[1518-11-02 00:24] falls asleep");
+    subject.parseItem("[1518-11-02 00:30] wakes up");
+
+    subject.accumulateGuardSleepTimes();
+
+    EXPECT_EQ("24", subject.getSleepiestMinute("43"));
+}
