@@ -29,7 +29,6 @@ public:
     std::set<std::string> pointsOverlapping;
 
 private:
-    int untouchedClaimId = 0;
     std::vector<Claim> possibleUntouchedClaims;
 };
 
