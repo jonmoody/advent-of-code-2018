@@ -29,11 +29,11 @@ TEST_F(Day4Test, TheNumberOfMinutesTheGuardsHaveBeenAsleepAreRecorded) {
 
     subject.accumulateGuardSleepTimes();
 
-    EXPECT_EQ(20, subject.guardSleepTimes["#10"]);
+    EXPECT_EQ(20, subject.guardSleepTimes["10"]);
 }
 
 TEST_F(Day4Test, TheGuardWithTheLongestSleepTimeWillBeFound) {
-    subject.parseItem("[1518-11-01 00:00] Guard #10 begins shift");
+    subject.parseItem("[1518-11-01 00:00] Guard #1093 begins shift");
     subject.parseItem("[1518-11-01 00:05] falls asleep");
     subject.parseItem("[1518-11-01 00:25] wakes up");
     subject.parseItem("[1518-11-01 00:26] Guard #99 begins shift");
@@ -42,5 +42,5 @@ TEST_F(Day4Test, TheGuardWithTheLongestSleepTimeWillBeFound) {
 
     subject.accumulateGuardSleepTimes();
 
-    EXPECT_EQ("#10", subject.getSleepiestGuard());
+    EXPECT_EQ("1093", subject.getSleepiestGuard());
 }

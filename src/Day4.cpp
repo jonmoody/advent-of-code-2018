@@ -3,7 +3,18 @@
 using namespace std;
 
 void Day4::solve() {
+    vector<string> lines = FileReader::readLinesFromFile("src/input/day4.txt");
+    for (string line : lines) {
+        parseItem(line);
+    }
+    sortItems();
+    accumulateGuardSleepTimes();
 
+    string sleepiestGuardId = getSleepiestGuard();
+
+    cout << "Sleepiest guard: " << sleepiestGuardId << endl;
+    cout << "Minutes slept: " << guardSleepTimes[sleepiestGuardId] << endl;
+    cout << sleepiestGuardId << " * " << guardSleepTimes[sleepiestGuardId] << " = " << stoi(sleepiestGuardId) * guardSleepTimes[sleepiestGuardId] << endl;
 }
 
 void Day4::parseItem(string item) {
@@ -27,14 +38,14 @@ void Day4::accumulateGuardSleepTimes() {
         vector<string> values { istream_iterator<string>{iss}, istream_iterator<string>{}};
 
         if (line.find("Guard") != string::npos) {
-            guard = "#";
+            guard = "";
             for (string::iterator it = line.begin(); it < line.end(); ++it) {
                 if (guardDelim.find(*it) != string::npos) {
                     ++it;
-                    guard.push_back(*it);
-                    ++it;
-                    guard.push_back(*it);
-                    cout << "Guard: " << guard << endl;
+                    while (*it != ' ') {
+                        guard.push_back(*it);
+                        ++it;
+                    }
                 }
             }
         }
@@ -47,7 +58,6 @@ void Day4::accumulateGuardSleepTimes() {
                     minuteAsleep.push_back(*it);
                     ++it;
                     minuteAsleep.push_back(*it);
-                    cout << "Minute asleep: " << minuteAsleep << endl;
                 }
             }
         }
@@ -60,11 +70,8 @@ void Day4::accumulateGuardSleepTimes() {
                     minuteAwake.push_back(*it);
                     ++it;
                     minuteAwake.push_back(*it);
-                    cout << "Minute awake: " << minuteAwake << endl;
 
                     guardSleepTimes[guard] += stoi(minuteAwake) - stoi(minuteAsleep);
-
-                    cout << "Guard " << guard << " sleep time: " << guardSleepTimes[guard] << endl;
                 }
             }
         }
