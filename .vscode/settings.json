@@ -26,6 +26,7 @@
         "hash_map": "cpp",
         "list": "cpp",
         "map": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "iostream": "cpp"
     }
 }

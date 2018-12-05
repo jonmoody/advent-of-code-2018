@@ -4,12 +4,13 @@
 #include "utils/FileReader.h"
 #include <string>
 #include <vector>
+#include <iostream>
 
 class Day5 {
 public:
     void solve();
 
-    void parseItem(std::string);
+    std::string parseItem(std::string);
 
 };
 
