@@ -16,6 +16,11 @@ void Day4::solve() {
     cout << "Sleepiest guard: " << sleepiestGuardId << endl;
     cout << "Most common minute slept: " << sleepiestMinute << endl;
     cout << sleepiestGuardId << " * " << sleepiestMinute << " = " << stoi(sleepiestGuardId) * stoi(sleepiestMinute) << endl;
+
+    findMostFrequentlyAsleepMinute();
+
+    cout << "Most frequently asleep minute is " << mostFrequentlyAsleepMinute << " by Guard #" << guardWithMostFrequentlyAsleepMinute << endl;
+    cout << mostFrequentlyAsleepMinute << " * " << guardWithMostFrequentlyAsleepMinute << " = " << stoi(mostFrequentlyAsleepMinute) * stoi(guardWithMostFrequentlyAsleepMinute) << endl; 
 }
 
 void Day4::parseItem(string item) {
@@ -108,4 +113,17 @@ string Day4::getSleepiestMinute(string guard) {
     }
 
     return sleepiestMinute;
+}
+
+void Day4::findMostFrequentlyAsleepMinute() {
+    int largestMinuteCount = 0;
+    for (auto const& guard : sleepyMinutes) {
+        for (auto const& minute : guard.second) {
+            if (minute.second > largestMinuteCount) {
+                guardWithMostFrequentlyAsleepMinute = guard.first;
+                mostFrequentlyAsleepMinute = minute.first;
+                largestMinuteCount = minute.second;
+            }
+        }
+    }
 }
