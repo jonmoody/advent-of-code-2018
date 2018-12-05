@@ -5,12 +5,14 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 class Day5 {
 public:
     void solve();
 
     std::string parseItem(std::string);
+    int findSmallestPolymerLength(std::string);
 
 };
 

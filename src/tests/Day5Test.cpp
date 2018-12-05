@@ -14,3 +14,9 @@ TEST_F(Day5Test, TheInputCanBeReduced) {
 
     EXPECT_EQ("dabCBAcaDA", result);
 }
+
+TEST_F(Day5Test, ThePolymerCanBeReducedFurtherByRemovingUnits) {
+    int result = subject.findSmallestPolymerLength("dabAcCaCBAcCcaDA");
+
+    EXPECT_EQ(4, result);
+}

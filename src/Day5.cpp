@@ -10,6 +10,7 @@ void Day5::solve() {
     }
     
     cout << "Remaining units: " << reducedItem.length() << endl;
+    cout << "Smallest polymer length: " << findSmallestPolymerLength(reducedItem) << endl;
 }
 
 string Day5::parseItem(string item) {
@@ -29,4 +30,23 @@ string Day5::parseItem(string item) {
     }
 
     return item;
+}
+
+int Day5::findSmallestPolymerLength(string item) {
+    string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int smallestCount = item.length();
+
+    for (string::iterator lettersIt = letters.begin(); lettersIt < letters.end(); ++lettersIt) {
+        string modifiedItem = item;
+        modifiedItem.erase(remove(modifiedItem.begin(), modifiedItem.end(), *lettersIt), modifiedItem.end());
+        modifiedItem.erase(remove(modifiedItem.begin(), modifiedItem.end(), *lettersIt + 32), modifiedItem.end());
+
+        string reducedItem = parseItem(modifiedItem);
+        int unitCount = reducedItem.length();
+        if (unitCount < smallestCount) {
+            smallestCount = unitCount;
+        }
+    }
+
+    return smallestCount;
 }
