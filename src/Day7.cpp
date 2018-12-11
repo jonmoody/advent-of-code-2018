@@ -12,9 +12,29 @@ void Day7::solve() {
 }
 
 void Day7::parseItem(string item) {
-    dependencies.push_back(item.substr(5, 1) + item.substr(36, 1));
+    dependencies[item.at(36)].insert(item.at(5));
+    dependencies[item.at(5)];
 }
 
 string Day7::getOrder() {
-    return "";
+    string answer;
+    while (!dependencies.empty()) {
+        deque<char> order;
+
+        for (auto& dep : dependencies) {
+            if (dep.second.empty()) {
+                order.push_back(dep.first);
+            }
+        }
+
+        char firstLetter = order.front();
+
+        for (auto& dep : dependencies) {
+            dep.second.erase(firstLetter);
+        }
+        answer.push_back(firstLetter);
+        dependencies.erase(firstLetter);
+    }
+
+    return answer;
 }

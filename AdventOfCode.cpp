@@ -5,6 +5,7 @@
 #include "src/Day4.h"
 #include "src/Day5.h"
 #include "src/Day6.h"
+#include "src/Day7.h"
 
 using namespace std;
 
@@ -40,6 +41,11 @@ int main(int argc, char** argv)
     cout << "Day 6" << endl;
     Day6 day6;
     day6.solve();
+
+    cout << "===================" << endl;
+    cout << "Day 7" << endl;
+    Day7 day7;
+    day7.solve();
 
     return 0;
 }

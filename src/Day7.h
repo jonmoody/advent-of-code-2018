@@ -11,6 +11,7 @@
 #include <map>
 #include <algorithm>
 #include <cmath>
+#include <deque>
 #include "utils/FileReader.h"
 
 class Day7 {
@@ -21,7 +22,7 @@ public:
     std::string getOrder();
 
 private:
-    std::vector<std::string> dependencies;
+    std::map<char, std::set<char> > dependencies;
 };
 
 #endif // DAY7_H
